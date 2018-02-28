@@ -86,3 +86,20 @@ print(list(m + n for m in 'ABC' for n in 'XYZ'))
 
 import os # 导入os模块，模块的概念后面讲到
 print([d for d in os.listdir('.')]) # os.listdir可以列出文件和目录
+
+'''for循环可以同时使用两个甚至多个变量，比如dict的items()可以同时迭代key和value'''
+d1={'x':'1','y':'2','z':'3'}
+for k,v in d1.items():
+    print(k,'=',v)
+
+print([k + '=' + v for k, v in d1.items()])
+
+L3=['Hello','World']
+print([s.lower() for s in L3])
+
+L4=['Hello', 'World', 18, 'Apple', None]
+print([s.lower() for s in L4 if isinstance(s,str)])
+
+print('-----------------------------------生成器')
+g = (x * x for x in range(10))
+print(g)
