@@ -1,4 +1,5 @@
 from functools import reduce
+from operator import itemgetter
 '''高阶函数'''
 f=abs
 print(f)
@@ -118,3 +119,40 @@ if list(filter(is_palindrome, range(1, 200))) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11,
     print('测试成功!')
 else:
     print('测试失败!')
+
+print('-----------------------------sorted')
+'''sorted(iterable[, cmp[, key[, reverse]]])
+iterable -- 可迭代对象。
+cmp -- 比较的函数，这个具有两个参数，参数的值都是从可迭代对象中取出，此函数必须遵守的规则为，大于则返回1，小于则返回-1，等于则返回0。
+key -- 主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序。
+reverse -- 排序规则，reverse = True 降序 ， reverse = False 升序（默认）
+'''
+l1=[36,-5,-11,1,0,-1]
+print(sorted(l1)) #升序
+print(sorted(l1,key=abs)) #绝对值升序
+print(sorted(l1,reverse=True)) #reverse 反向  降序
+
+l2=['Zoo','bob','Add','alice']
+print(l2)
+print(sorted(l2))
+print(sorted(l2,key=str.lower))
+print(l2)
+
+
+L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
+def by_name(t):
+    return t[0]
+
+def by_score(t):
+    return t[1]
+L2 = sorted(L, key=by_name)
+print(L2)
+L3 = sorted(L,key=by_score,reverse=True)
+print(L3)
+print()
+#from operator import itemgetter
+students = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
+
+print(sorted(students, key=itemgetter(0)))
+print(sorted(students, key=lambda t: t[1]))
+print(sorted(students, key=itemgetter(1), reverse=True))
